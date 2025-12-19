@@ -114,3 +114,10 @@ def preprocess_data(path, output_path):
     )
 
     return X_train_processed, X_test_processed, y_train, y_test
+
+if __name__ == "__main__":
+
+    input_path = "telco_customer_churn_raw.csv"
+    output_path = "preprocessing/telco_customer_churn_preprocessing.csv"
+
+    preprocess_data(input_path, output_path)
