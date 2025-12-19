@@ -30,6 +30,6 @@ jobs:
       run: |
         git config --global user.name "github-actions"
         git config --global user.email "github-actions@github.com"
-        git add preprocessing/telco_customer_churn_preprocessing
+        git add preprocessing/telco_customer_churn_preprocessing.csv
         git commit -m "Update preprocessed dataset" || echo "No changes"
         git push
