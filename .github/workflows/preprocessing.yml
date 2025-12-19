@@ -1,0 +1,35 @@
+name: Auto Preprocessing Dataset
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  preprocess:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - name: Setup Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.9'
+
+    - name: Install dependencies
+      run: |
+        pip install pandas numpy scikit-learn
+
+    - name: Run preprocessing script
+      run: |
+        python preprocessing/automate_Ardinda_Nur_Ramadhani.py
+
+    - name: Commit & Push processed data
+      run: |
+        git config --global user.name "github-actions"
+        git config --global user.email "github-actions@github.com"
+        git add preprocessing/telco_customer_churn_preprocessing
+        git commit -m "Update preprocessed dataset" || echo "No changes"
+        git push
